@@ -1,27 +1,29 @@
-"use client";
-
+import { GET } from "./api/post/route";
 import Person from "./components/Person";
 
-const getPost = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/post", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    } else {
-      return res.json();
-    }
-  } catch (e) {
-    console.log(e);
-  }
-};
+// const getPost = async () => {
+//   try {
+//     const res = await fetch("http://localhost:3000/api/post", {
+//       cache: "no-store",
+//     });
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch data");
+//     } else {
+//       return res.json();
+//     }
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
 export default async function Home() {
   // const data = AXIOS_GET_DATA();
 
-  const { posts } = await getPost();
+  // const { posts } = await getPost();
   // console.log();
+
+  const result = await GET();
+  console.log(`RS : `, result);
   return (
     <main>
       <div>POST</div>
@@ -36,7 +38,7 @@ export default async function Home() {
         </form>
         <button className="bg-gray-600 p-3">POST</button>
       </div>
-      <div>
+      {/* <div>
         {posts.map(
           (
             post: { _id: string; name: string; age: number; address: string },
@@ -53,7 +55,7 @@ export default async function Home() {
             );
           }
         )}
-      </div>
+      </div> */}
     </main>
   );
 }
