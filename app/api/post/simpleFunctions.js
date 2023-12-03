@@ -7,3 +7,10 @@ export async function GETPOSTS() {
   const posts = await Post.find();
   return posts;
 }
+
+export async function POSTDATA() {
+  const { name, age, address } = await request.json();
+  await connectMongoDB();
+  await Post.create({ name, age, address });
+  return;
+}
