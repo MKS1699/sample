@@ -19,14 +19,6 @@ export async function GET() {
   return NextResponse.json({ posts });
 }
 
-// getposts
-
-export async function GETPOSTS() {
-  await connectMongoDB();
-  const posts = await Post.find();
-  return posts;
-}
-
 // DELETE
 
 export async function DELETE(request) {

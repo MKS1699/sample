@@ -1,4 +1,4 @@
-import { GET, GETPOSTS } from "./api/post/route";
+import { GETPOSTS } from "./api/post/simpleFunctions";
 import Person from "./components/Person";
 
 // const getPost = async () => {
