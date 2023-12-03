@@ -1,6 +1,6 @@
 "use client";
 
-import Person from "./components/person";
+import Person from "./components/Person";
 
 const getPost = async () => {
   try {
