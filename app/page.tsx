@@ -23,7 +23,6 @@ export default async function Home() {
   // console.log();
 
   const posts = await GETPOSTS();
-  console.log(`RS : `, posts);
   return (
     <main>
       <div>POST</div>
@@ -38,7 +37,7 @@ export default async function Home() {
         </form>
         <button className="bg-gray-600 p-3">POST</button>
       </div>
-      {/* <div>
+      <div>
         {posts.map(
           (
             post: { _id: string; name: string; age: number; address: string },
@@ -55,7 +54,7 @@ export default async function Home() {
             );
           }
         )}
-      </div> */}
+      </div>
     </main>
   );
 }
