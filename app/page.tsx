@@ -1,6 +1,27 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Person from "./components/person";
+
+const getPost = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/post", {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    } else {
+      return res.json();
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export default async function Home() {
+  // const data = AXIOS_GET_DATA();
+
+  const { posts } = await getPost();
+  // console.log();
   return (
     <main>
       <div>POST</div>
@@ -13,7 +34,25 @@ export default function Home() {
           <div>Address :</div>
           <input type="text" />
         </form>
-        <div>POST</div>
+        <button className="bg-gray-600 p-3">POST</button>
+      </div>
+      <div>
+        {posts.map(
+          (
+            post: { _id: string; name: string; age: number; address: string },
+            index: number
+          ) => {
+            return (
+              <Person
+                key={`Post-${index}`}
+                id={post._id}
+                name={post.name}
+                age={post.age}
+                address={post.address}
+              />
+            );
+          }
+        )}
       </div>
     </main>
   );
