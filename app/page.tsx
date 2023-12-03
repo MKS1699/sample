@@ -1,4 +1,4 @@
-import { GET } from "./api/post/route";
+import { GET, GETPOSTS } from "./api/post/route";
 import Person from "./components/Person";
 
 // const getPost = async () => {
@@ -22,8 +22,8 @@ export default async function Home() {
   // const { posts } = await getPost();
   // console.log();
 
-  const result = await GET();
-  console.log(`RS : `, result);
+  const posts = await GETPOSTS();
+  console.log(`RS : `, posts);
   return (
     <main>
       <div>POST</div>

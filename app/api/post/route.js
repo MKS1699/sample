@@ -16,8 +16,14 @@ export async function POST(request) {
 export async function GET() {
   await connectMongoDB();
   const posts = await Post.find();
-  //   console.log(posts);
-  NextResponse.json({ posts });
+  return NextResponse.json({ posts });
+}
+
+// getposts
+
+export async function GETPOSTS() {
+  await connectMongoDB();
+  const posts = await Post.find();
   return posts;
 }
 
